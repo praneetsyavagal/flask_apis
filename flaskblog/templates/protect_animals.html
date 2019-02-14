@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- !PAGE CONTENT! -->
+
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Community Services</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Protect Animals</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="{{url_for('static', filename='pa1.jpg')}}" width="500" height="300" onclick="onClick(this)" alt="Help the Rhinos">
+      <img src="{{url_for('static', filename='pa2.jpg')}}" width="500" height="300"  onclick="onClick(this)" alt="Save the Elephant">
+    </div>
+
+    <div class="w3-half">
+      <img src="{{url_for('static', filename='pa3.jpg')}}" width="500" height="300" onclick="onClick(this)" alt="Save the Cattle ">
+      <img src="{{url_for('static', filename='pa4.jpg')}}" width="500" height="300"  onclick="onClick(this)" alt="Feed the Hippo">
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+{% endblock content %}
+

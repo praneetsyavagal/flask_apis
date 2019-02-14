@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Community</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.fa {
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
+}
+
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Services<br>Provided</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    {% for cate in option_list %}
+    <a href="{{url_for( 'category',cat=cate)}}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">{{cate}}</a> {% endfor %}
+<!--    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="save_nature.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Save Nature</a> 
+    <a href="save_water.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Save Water</a> 
+    <a href="protect_animals.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Protect Animals</a> 
+    <a href="humanitarian_value.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Humanitarian values</a> -->
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Community Services</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Showcase</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="{{url_for('static', filename='1.jpg')}}" width="500" height="300" onclick="onClick(this)" alt="Save Animals">
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+
+      <script>
+      var likecount=0;  
+      function myFunction(x) {
+      x.classList.toggle("fa-thumbs-down");
+      like(this)
+      }
+      function like(y){
+        likecount++;
+
+      }
+      </script>
+
+
+      <img src="{{url_for('static', filename='2.jpg')}}" width="500" height="300"  onclick="onClick(this)" alt="Collect plastic from the woods">
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+
+      <script>
+      function myFunction(x) {
+      x.classList.toggle("fa-thumbs-down");
+      }
+      </script>
+    </div>
+
+    <div class="w3-half">
+      <img src="{{url_for('static', filename='3.jpg')}}" width="500" height="300" onclick="onClick(this)" alt="keep our environment clean ">
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+
+      <script>
+      function myFunction(x) {
+      x.classList.toggle("fa-thumbs-down");
+      }
+      </script>
+      <img src="{{url_for('static', filename='4.jpg')}}" width="500" height="300"  onclick="onClick(this)" alt="Plant more trees.">
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+
+      <script>
+      function myFunction(x) {
+      x.classList.toggle("fa-thumbs-down");
+      }
+      </script>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Save Nature</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>It is a well-known fact; we don’t value a thing until we lost it. Here from thing I mean the trees and plants. Human beings and animals, all are wholly reliant on trees. Largest portion of our food comes from plants and trees. Corn, fruits, vegetables, spices, nuts and many other edibles come from trees. They play a very important role in our lives.Plants and trees are considered to be the rescuers of the nature. If we wouldn’t save them, our next generation will have to pay for it. So, just take care of them, they’ll take care of you. A study shows that having trees in your neighborhood will keep you away from many mental and physical diseases. They’ll have a very stimulating impact.only by saving trees we will be to pass all the benefits, which are available to us, to our next generation. So, never cut the trees and also discourage this act. They have no alternative. On the other hand grow more and more trees and plants.
+    </p>
+  </div>
+  <!-- Save animals -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Save water</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>Water conservation is the careful use and preservation of water supply and includes both the quantity and quality of water utilized. Water is an essential asset for the nourishment of all life and is the fundamental demand for all activities appropriate from local use to agricultural and industry.With the regular expanding weight of the human population, there has been a serious tension on water resources. Disregard of customary water bodies like tanks and lakes, unpredictable and abuse of groundwater, incorrect preservation of surface water systems has bothered the issue still further and is probably going to grow in the years to come.There are various approaches to make your water to last nowadays. One simple yet frequently disregarded strategy to cut your water bill is to utilize your water twice. Unlike electricity, water can be reused over again and again. That’s the idea of water conservation.
+
+    </p>
+  </div>
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Protect animals animals</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+      Wildlife conservation is the practice of protecting wild plant and animal species and their habitat. Wildlife plays an important role in balancing the ecosystem and provides stability to different natural processes of nature like rainfall(transpiration from plant),changing of temperature(heat evolution by animals), fertility of soil (making of manure by earthworm). The goal of wildlife conservation is to ensure that nature will be around for future generations to enjoy and also to recognize the importance of wildlife and wilderness for humans and other species alike.
+    </p>
+  </div>
+  <!-- Designers -->
+
+    <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Humanitarian Values</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Values are beliefs that have an inherent worth in usefulness or importance to the holder," or "principles, standards, or qualities reflected worthwhile or desirable.” Values institute an important characteristic of self-concept and serve as supervisory principles for person. In literature, it is documented that values are so indissolubly woven into human language, thought and behaviour patterns that they have fascinated philosophers for millennia. Yet they have proved so "quick-silvery" and complex that, despite their decisive role in human motivation, we remain desperately ignorant of the laws that govern them. (Toffler, 1969). Scott and Kluckhohn described value as a conception: explicit or implicit of desirable which influences the selection from available modes, means and end of action (1951).
+    </p>
+  </div>
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<!--
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+-->
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
